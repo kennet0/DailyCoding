@@ -6,20 +6,23 @@
 // ▣ 출력설명
 // 첫 줄에 최대 나이차이를 출력합니다.
 
-
 #include <iostream>
 using namespace std;
 
 int main(){
 
-int n = 0;
+    // freopen("input.txt","rt", stdin);
+    int a, n = 0, min = 1000000, max = 0;
 
-cin >> n;
-for(int i = 0 ; i < n; i++)
-{
-    cin 
-}
+    cin >> n;
+    for(int i = 0 ; i < n; i++)
+    {
+        cin >> a;
+        if(a > max) max = a;
+        if(a < min) min = a;
+    }
+   
 
-
-
+    cout << max - min;
+ 
 }
