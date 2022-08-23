@@ -11,27 +11,26 @@ using namespace std;
 int main(){
 
     // freopen("input.txt","rt", stdin);
-    char a[101], b[101];
-    int p = 0;
+    char a[31], b[31];
+    int cnt = 0;
     gets(a);
 
    for(int i = 0; a[i]!='\0';i++)
    {
-    if( a[i]!=' ')
-    {
-        if(a[i] >= 65 && a[i] <= 90 )
-        {
-            b[p++] = a[i] + 32;
-        }else{
-            b[p++] = a[i];
-        }
-    }
+    if( a[i]=='('){
+        cnt++;
+    }else if(a[i]==')'){
+        cnt--;
+    }if(cnt < 0)
+        break;
+
    }
-   b[p] = '\0';
-
-   printf("%s\n",b);
-
+   if(cnt == 0 )
+   {
+     printf("YES");
+   }else{
+    printf("NO");
+   }
     return 0;
-  
 
 }
