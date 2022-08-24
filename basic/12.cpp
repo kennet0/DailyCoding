@@ -14,17 +14,18 @@ using namespace std;
 int main()
 {
    //  freopen("input.txt","rt", stdin);
-   int n, sum = 0, c = 1, d= 9, res = 0;
+   int n, sum = 0, place = 1, num = 9, count = 0;
    scanf("%d",&n);
-   while(sum + d < n)
+   while(sum + num < n)
    {
-      res = res +(c*d);
-      sum = sum + d;
-      c++;
-      d = d * 10;
+      count = count + (num * place);
+      sum = sum + num;
+      place++;
+      num = num * 10;
    }
-  
-   // printf("%d ", cnt);
+   count = count + ((n - sum)*place);
+   printf("%d ", count);
+   
     
    return 0;
 }

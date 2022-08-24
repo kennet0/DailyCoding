@@ -23,7 +23,7 @@ int main()
       {
          tmp = tmp/10;
          cnt++;
-      }
+         }
    }
    
    printf("%d ", cnt);
