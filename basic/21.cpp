@@ -44,28 +44,40 @@ int A[101],B[101];
 
 int main()
 {
-   // freopen("input.txt","rt", stdin);
-   int n;
-   scanf("%d",&n);
-   for(int i=0; i<n; i++)
-      scanf("%d",&A[i]);
-   for(int i=0; i<n; i++)
-      scanf("%d",&B[i]);
+  //  freopen("input.txt","rt", stdin);
+  int n, aScore=0,bScore=0, check=0;
+  for(int i=0; i<10; i++)
+    scanf("%d",&A[i]);
+  for(int i=0; i<10; i++)
+    scanf("%d",&B[i]);
 
-   for(int i=0; i<n; i++)
-   {
-    if((A[i]==1 && B[i]==2)||(A[i]==2 && B[i]==3)||(A[i]==3 && B[i]==1))
-    {
-      printf("B\n");
-    }
-    else if((A[i]==2 && B[i]==1)||(A[i]==3 && B[i]==2)||(A[i]==1 && B[i]==3))
-    {
-      printf("A\n");
-
+  for(int i=0; i<10; i++)
+  {
+    if(A[i]==B[i]){
+      aScore++;
+      bScore++;
+    }else if(A[i]>B[i]){
+      aScore += 3;
+      check = 1;
     }else{
-      printf("D\n");
+      bScore += 3;
+      check = 2;  
     }
-   }
+       
+  }
+  printf("%d %d\n",aScore,bScore);
+  if(aScore == bScore)
+  {
+    if(check == 1)
+      printf("A");
+    else if(check == 2)
+      printf("B");
+    else
+      printf("D");
+  }else if(aScore > bScore)
+    printf("A");
+  else
+    printf("B");
    
    return 0;
 }
