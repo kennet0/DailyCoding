@@ -18,10 +18,33 @@ using namespace std;
 int main()
 {
    // freopen("input.txt","rt", stdin);
-   char a[101], b[101];
-   scanf("%s",&a);
-   scanf("%s",&b);
-  
-   printf("YES");
+   int n, num, answer=0, sum;
+   scanf("%d",&n);
+   for(int i=1; i<=n; i++)
+   {
+      sum = 0;
+      scanf("%d",&num);
+      scanf("%d",&answer);
+     
+      // for(int j=1; j<=num; j++)
+      // {
+      //    sum += j;
+      // }
+
+      if(num%2==0)
+      {
+         sum = (num+1)*(num/2);
+      }else{
+         sum = (num+1)*(num/2)+(num/2+1);
+      }
+
+      if(sum == answer)
+      {
+         printf("YES\n");
+      }else{
+         printf("NO\n");
+      }
+      
+   } 
    return 0;
 }
