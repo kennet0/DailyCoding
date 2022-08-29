@@ -14,8 +14,7 @@
 int main()
 {
   //  freopen("input.txt","rt", stdin);
-  int n, pre, now, cnt = 1, result=0, max = -2147000000;
-  std::vector<int> a;
+  int n, pre, now, cnt = 1, max = -2147000000;
   scanf("%d",&n);
   scanf("%d", &pre);
 
