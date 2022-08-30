@@ -16,33 +16,26 @@
 int main()
 {
   //  freopen("input.txt","rt", stdin);
-  int n, i, j, tmp, digit, cnt=0, pos=0;
+  int n, cur, lt=1, rt, k=1, res=0;
   scanf("%d",&n);
-  std::vector<int> a(n);
-  tmp = n;
-  i=1;
-  while(1)
+  while(lt != 0)
   {
-    a[i] = tmp%10;
-    tmp /= 10;
-    // printf("tmp %d\n" , tmp);
-    if(tmp<1) break;
-    i++;
-    // printf("i : %d\n", i );
-  }
-
-  // printf("i : %d", i );
-
-  if(a[1]>=3) cnt++;
-
-  for(j=2;j<=2;j++)
-  {
-    if(a[j]<=3)
-    {
-      cnt += a[j-1]+ (j-1);
+    lt = n / (k*10);
+    cur = (n/k) % 10;
+    rt = n % k;
+    if(cur > 3){
+      res = res + (lt+1) * k; 
+    }else if(cur < 3){
+      res = res + lt * k;
+    }else{
+      res = res + (lt * k) + (rt + 1);
     }
+    k = k*10;
   }
-  printf("%d", cnt);
+
+  printf("%d", res);
+
+
 
  
   return 0;
