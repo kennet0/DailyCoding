@@ -11,31 +11,34 @@
 // 오름차순으로 정렬된 배열을 출력합니다.
 #include <iostream>
 #include <vector>
+int a[101], b[101], sum[301];
 int main()
 {
    freopen("input.txt","rt", stdin);
-  int n,m,i,j,pos;
+  int n,m,i,j, p1=1, p2=1, p3=1;
   scanf("%d",&n);
-  std::vector<int> a(n);
-  for(i=0; i<n; i++){
+  for(i=1; i<=n; i++){
     scanf("%d",&a[i]);
   }
   scanf("%d",&m);
-  std::vector<int> b(m),sum(n+m);
-  for(i=0; i<m; i++){
+  for(i=1; i<=m; i++){
     scanf("%d",&b[i]);
   }
-
-  for(i=0; i<n; i++){
-    for(j=0; j<m; j++){
-      
+  while(p1<=n && p2<=m){
+    if(a[p1]<b[p2]){
+      sum[p3++]=a[p1++];
+    }else{
+      sum[p3++]=b[p2++];
     }
-    
   }
+  while(p1<=n) sum[p3++]=a[p1++]; 
+  while(p2<=m) sum[p3++]=b[p2++]; 
+
+ 
   
-  for(i=1;i<=n;i++)
+  for(i=1;i<=n+m;i++)
   {
-    printf("%d ",os[i]);
+    printf("%d ",sum[i]);
   }
  
   return 0;
