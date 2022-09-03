@@ -11,38 +11,38 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 int main()
 {
-   freopen("input.txt","rt", stdin);
-  int n,m,i,j, p1=1, p2=1, p3=1;
+  //  freopen("input.txt","rt", stdin);
+  int n,m,i,j, p1=0, p2=0, p3=0;
   scanf("%d",&n);
-  std::vector<int> a(n+1);
-  for(i=1; i<=n; i++){
+  std::vector<int> a(n);
+  for(i=0; i<n; i++){
     scanf("%d",&a[i]);
-    if(a[i]>a[i-1])
   }
+  sort(a.begin(), a.end());
+
   scanf("%d",&m);
-  std::vector<int> b(m+1), sum(n+m+1);
-  for(i=1; i<=m; i++){
+  std::vector<int> b(m), sum(n+m);
+  for(i=0; i<m; i++){
     scanf("%d",&b[i]);
   }
-  while(a[p1]<=n && p2<=m)
+  sort(b.begin(),b.end());
+  
+
+  while(p1<n && p2<m)
   {
-    if(a[p1]!=b[p2]){
-      if(p1<p2) p1++;
-      else p2++;
-      
-    }else{
-       sum[p3++] = a[p1++];
-    }
+    if(a[p1]==b[p2]){
+      sum[p3++] = a[p1++];
+      p2++;
+    }else if(a[p1]<b[p2]) p1++;
+    else p2++;
   }
  
-
-
- 
   
-  for(i=1;i<=n+m;i++)
+  for(i=0;i<p3;i++)
   {
     printf("%d ",sum[i]);
   }
