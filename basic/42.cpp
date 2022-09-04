@@ -21,13 +21,16 @@ int main()
   for(i=0;i<n;i++){
     scanf("%d",&a[i]);
   }
+  // printf("test %d\n",*(a.end()-1));
   sort(a.begin(),a.end());
   lt=0; rt=n-1; 
   while(lt<=rt){
     mid=(lt+rt)/2;
-    if(a[mid]==key)
-      printf("%d",mid+i);
-   
+    if(a[mid]==key){
+      printf("%d\n",mid + 1);
+      return 0;
+    }
+      
     else if(a[mid]>key) rt = mid - 1;
     else lt = mid + 1;
   }
