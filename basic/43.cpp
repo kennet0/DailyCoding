@@ -19,25 +19,34 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+int a[1001], n;
+int Count(int s){
+  int i, cnt=1, sum=0;
+  for(i=1; i<=n;i++){
+    if(sum + a[i]>s){
+      
+    }
+  }
+
+}
 
 int main()
 {
    freopen("input.txt","rt", stdin);
-  int n, key, i, result, lt=0, rt, sum=0, cnt=0, tmp;
-  scanf("%d %d",&n, &key);
-  std::vector<int> a(n);
-  for(i=0;i<n;i++){
+  int m, i, result, lt=1, rt, cnt=0, mid, tmp;
+  scanf("%d %d",&n, &m);
+  for(i=1;i<=n;i++){
     scanf("%d",&a[i]);
+    rt=rt+a[i];
   }
   
-  for(i=0;i<n;i++){
-    sum = a[i];
-  }
   while(lt<=rt)
   {
-    result = sum/2;
-    tmp = result;
-    cnt=0;
+    mid = (lt+rt)/2;
+    if(Count(mid))
+
+
+
     for(i=0;i<n;i++){
       tmp -= a[i];
       cnt++;
