@@ -51,8 +51,6 @@ int main()
       res = mid;
       rt = mid -1;
     } else lt = mid+1;
-
-  
   
   }
   printf("%d\n", res);

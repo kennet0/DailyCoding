@@ -21,20 +21,20 @@
 using namespace std;
 vector<int> x;
 int n, c;
-int Position(int s){
-  int i, sum=0, cnt=0;
-  for(i=0;i<n;i++){
-    if(sum + x[i] > s){
+int Position(int len){
+  int i, pos=x[0], cnt=1;
+  for(i=1;i<n;i++){
+    if(x[i] - pos >= len){
       cnt++;
-      sum = x[i];
-    }else sum = sum+x[i];
+      pos = x[i];
+    }
   }
   return cnt;
 }
 
 int main(){
-
-  int i, lt, rt, mid, tmp;
+  //  freopen("input.txt","rt", stdin);
+  int i, lt, rt, mid, tmp, res;
 
   scanf("%d %d", &n,&c);
   
@@ -49,9 +49,11 @@ int main(){
     mid = (lt+rt)/2;
     if(Position(mid) >=c)
     {
-
-    }
+      res = mid;
+      lt = mid +1;
+    }else rt = mid - 1;
   }
 
+  printf("%d\n", res);
 }
 
