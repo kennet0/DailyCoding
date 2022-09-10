@@ -32,7 +32,7 @@ using namespace std;
 int a[1001];
 bool check [10];
 int main(){
-  //  freopen("input.txt","rt", stdin);
+   freopen("input.txt","rt", stdin);
   int n,i,k,j, cnt=0,bp=0, pos=0;
   scanf("%d %d", &n,&k);
 
