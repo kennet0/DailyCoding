@@ -21,7 +21,7 @@
 
 using namespace std;
 
-int list[21][21] ,ch[21];
+int list[30][30] ,ch[30];
 int cnt=0;
 int n, m;
 
@@ -32,9 +32,9 @@ void DFS(int v)
   }else{
     for(int i =1; i<=n;i++){
       if(list[v][i]==1 && ch[i]==0){
-        ch[i] == 1;
+        ch[i] = 1;
         DFS(i);
-        ch[i]== 0;
+        ch[i]= 0;
       }
     }
   }
@@ -52,5 +52,6 @@ int main()
     }
   ch[1]=1;
   DFS(1);
+  cout << cnt;
 }
 
