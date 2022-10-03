@@ -1,65 +1,45 @@
-//68. 최소비용(DFS : 가중치 방향그래프 인접리스트)
-//가중치 방향그래프가 주어지면 1번 정점에서 N번 정점으로 가는 최소비용을 출력하는 프로그
-//램을 작성하세요.
-//   1
-//12
-//225
-//2
-//5
-//       6
-//2
-//10
-//  3
-//4 3
-// ▣ 입력설명
-//첫째 줄에는 정점의 수 N(1<=N<=20)와 간선의 수 M가 주어진다. 그 다음부터 M줄에 걸쳐 연 결정보가 주어진다.
-//▣ 출력설명 최소비용을 출력합니다.
 //
+//아래 그림과 같은 이진트리를 넓이우선탐색해 보세요. 간선 정보 6개를 입력받아 처리해보세
+//요.
+//2
+//1
+//       3
+//            4567
+//넓이 우선 탐색 : 1 2 3 4 5 6 7
 
 #include <iostream>
-#include <string>
 #include <vector>
-#include <map>
 #include <algorithm>
 
 using namespace std;
+int Q[100], front = -1, back= -1, ch[10];
+vector<int> maps[7];
 
-int n,m, mins = 2147000000 ;
-int ch[30];
-vector<pair<int,int>> maps[30];
 
-void DFS(int v, int sum){
-    if(v==n){
-        if(sum < mins) mins = sum;
-        
-    }else{
-        for(int i=0;i<maps[v].size(); i++){
-            int dest = maps[v][i].first;
-            if(ch[dest] == 0){
-                ch[dest] = 1;
-                DFS(dest, sum + maps[v][i].second);
-                ch[dest] = 0;
-            }
-        }
-    }
-}
 
 int main() {
     freopen("input.txt","rt", stdin);
-    int a,b,c;
-    cin >> n >> m;
-    
-    for(int i=1; i<=m; i++){
-        scanf("%d %d %d",&a,&b,&c);
-        maps[a].push_back({b,c});
-        
+    int x;
+    for(int i=1; i<=6; i++){
+        int a, b;
+        scanf("%d %d", &a, &b);
+        maps[a].push_back(b);
+        maps[b].push_back(a);
         
     }
-    
-    ch[1]=1;
-    DFS(1,0);
-    
-    cout << mins;
+    Q[++back]=1;
+    ch[1] =1;
+    while(front < back){
+        x = Q[++front];
+        cout << x;
+        for(int i=0; i<maps[x].size(); i++){
+            if(ch[maps[x][i]==0]){
+                ch[maps[x][i]]=1;
+                Q[++back] = maps[x][i];
+            }
+        }
+    }
+
 }
 
 
