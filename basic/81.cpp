@@ -57,7 +57,15 @@ int main() {
             }
         }
     }
-    cout << dist[e];
-   
+    
+    for(int j=0; j<ed.size();j++){
+        int start=ed[j].s;
+        int des=ed[j].e;
+        int val = ed[j].val;
+        if(dist[start] != MAX && dist[start] + val < dist[des]){
+            cout << "-1";
+            exit(0);
+        }
+    }
 }
 
