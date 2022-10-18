@@ -48,8 +48,6 @@ int main() {
     freopen("input.txt", "rt", stdin);
   
     DFS(0);
-    
-    
 
 }
 
