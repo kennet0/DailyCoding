@@ -16,28 +16,8 @@ int n ,m;
 int cnt = 0;
 int mins = MAX;
 
-void DFS(int y, int x, int sum){
-    if(y==n && x==m){
-        if(mins > graph[y][x]) mins = graph[y][x];
-    }else{
-        for(int i=0;i<4;i++){
-            int nextx = x+dx[i];
-            int nexty = y+dy[i];
-            if(nextx < 1 || nexty < 1 || nextx > m || nexty > n) continue;
-            if(graph[nexty][nextx] == 0 || ch[nexty][nextx] == 1) continue;
-
-            ch[nexty][nextx]=1;
-            graph[nexty][nextx]=sum;
-            DFS(nexty, nextx,sum+1);
-            ch[nexty][nextx]=0;
-        }
-    }
-}
-
-void BFS(int y, int x, int sum){
+void BFS(int y, int x, int L){
     queue<pair<int,int>> q;
-    int flag = 0;
-    
     q.push({y,x});
     while(!q.empty()){
         y = q.front().first;
@@ -52,50 +32,28 @@ void BFS(int y, int x, int sum){
             
             ch[nexty][nextx]=1;
             q.push({nexty,nextx});
-            graph[nexty][nextx] = sum;
+            graph[nexty][nextx] = graph[y][x]+1;
            
         }
-        sum++;
-        
     }
 }
 
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-//    freopen("input.txt", "rt", stdin);
-   
-    scanf("%d %d", &n, &m);
+
+    cin >> n >>m;
     for(int i=1;i<=n;i++){
-        for(int j=1; j<=m; j++){
-            scanf("%1d", &graph[i][j]);
+        string tmp;
+        cin >> tmp;
+        for(int j=0;j<tmp.length();j++){
+            int parsing = tmp[j]-'0';
+            graph[i][j+1] = parsing ;
         }
     }
-
-//    cin >> n >>m;
-//    for(int i=1;i<=n;i++){
-//        string tmp;
-//        cin >> tmp;
-//        for(int j=0;j<tmp.length();j++){
-//            int parsing = tmp[j]-'0';
-//            graph[i][j+1] = parsing ;
-//        }
-//
-//    }
     
     ch[1][1]=1;
-//    DFS(1,1,2);
-//    cout << mins;
-    
     BFS(1,1,2);
-    for(int i=1; i<=n;i++){
-        for(int j=1; j<=m; j++){
-            cout << graph[i][j]<< " ";
-        }
-        cout << endl;
-    }
-
-    
-   
+    cout << graph[n][m];
     
 }
